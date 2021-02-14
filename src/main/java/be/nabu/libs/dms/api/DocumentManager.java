@@ -2,6 +2,8 @@ package be.nabu.libs.dms.api;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import be.nabu.libs.datastore.api.WritableDatastore;
@@ -16,4 +18,7 @@ public interface DocumentManager {
 	public boolean canConvert(String fromContentType, String toContentType);
 	public void convert(File file, String toContentType, OutputStream output, Map<String, String> properties) throws IOException, FormatException;
 	public WritableDatastore getDatastore(File file);
+	public default List<Templater> getTemplaters() {
+		return new ArrayList<Templater>();
+	}
 }
